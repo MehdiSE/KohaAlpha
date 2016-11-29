@@ -1,0 +1,2 @@
+Algunos tipos de atributos de socio:
+* SHOW_BCODE - Mostrar código de barras en la lista de ítems de la pantalla de resúmen del socio.

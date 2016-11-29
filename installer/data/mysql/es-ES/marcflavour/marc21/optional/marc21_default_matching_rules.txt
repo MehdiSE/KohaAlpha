@@ -1,0 +1,4 @@
+Selección de reglas de coincidencia para registros bibliográficos MARC21, incluyendo:
+
+ISBN
+ISSN

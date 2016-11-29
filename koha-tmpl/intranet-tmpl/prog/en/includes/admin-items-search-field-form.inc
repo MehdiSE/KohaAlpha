@@ -1,0 +1,62 @@
+<ol>
+  <li>
+      [% IF field %]
+          <span class="label">Name: </span>
+          [% field.name %]
+          <input type="hidden" name="name" value="[% field.name %]">
+      [% ELSE %]
+          <label class="required" for="name">Name: </label>
+          <input type="text" name="name" id="name" class="required" required="required" />
+          <span class="required">Required</span>
+      [% END %]
+  </li>
+  <li>
+    <label class="required" for="label">Label: </label>
+    [% IF field %]
+        <input type="text" name="label" id="label" value="[% field.label %]" class="required" required="required" />
+    [% ELSE %]
+        <input type="text" name="label" id="label" class="required" required="required" />
+    [% END %]
+          <span class="required">Required</span>
+  </li>
+  <li>
+    <label for="tagfield" required="required">MARC field: </label>
+    <select id="tagfield" name="tagfield" class="required" required="required">
+      [% FOREACH tagfield IN ['001'..'999'] %]
+        [% IF field && field.tagfield == tagfield %]
+          <option value="[% tagfield %]" selected="selected">[% tagfield %]</option>
+        [% ELSE %]
+          <option value="[% tagfield %]">[% tagfield %]</option>
+        [% END %]
+      [% END %]
+    </select>
+    <span class="required">Required</span>
+  </li>
+  <li>
+    <label for="tagsubfield">MARC subfield: </label>
+    <select id="tagsubfield" name="tagsubfield">
+      [% codes = [''] %]
+      [% codes = codes.merge([0..9], ['a'..'z']) %]
+      [% FOREACH tagsubfield IN codes %]
+        [% IF field && field.tagsubfield == tagsubfield %]
+          <option value="[% tagsubfield %]" selected="selected">[% tagsubfield %]</option>
+        [% ELSE %]
+          <option value="[% tagsubfield %]">[% tagsubfield %]</option>
+        [% END %]
+      [% END %]
+    </select>
+  </li>
+  <li>
+    <label for="authorised_values_category">Authorised values category: </label>
+    <select id="authorised_values_category" name="authorised_values_category">
+      <option value="">- None -</option>
+      [% FOREACH category IN authorised_values_categories %]
+        [% IF field && field.authorised_values_category == category %]
+          <option value="[% category %]" selected="selected">[% category %]</option>
+        [% ELSE %]
+          <option value="[% category %]">[% category %]</option>
+        [% END %]
+      [% END %]
+    </select>
+  </li>
+</ol>

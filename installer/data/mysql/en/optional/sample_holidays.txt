@@ -1,0 +1,4 @@
+Sample holidays:
+	Sundays
+	Christmas
+	New Year's
